@@ -3,7 +3,7 @@ let winnerNumber;
 function startGame() {
     let buttonNumbers = Number(document.getElementById("number").value);
     if (300 > buttonNumbers > 0) {
-        winnerNumber = Math.floor(Math.random(3) * buttonNumbers) + 1;
+        winnerNumber = Math.floor(Math.random() * buttonNumbers) + 1;
         document.getElementById("start-game").setAttribute("hidden", "");
         createButtonsList(buttonNumbers);
     } else { 
