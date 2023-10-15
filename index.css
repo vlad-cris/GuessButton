@@ -1,0 +1,14 @@
+body {
+    background-color: rgb(37, 46, 43);
+}
+
+.size-up {
+    width: 100px;
+}
+
+.title { 
+    font-size: 30px;
+    font-weight: 700;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(9, 95, 75);
+}
