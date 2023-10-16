@@ -1,45 +1,59 @@
 let winnerNumber;
 
+//HTML elements
+const startElement = document.getElementById("start-game");
+const buttonSideElement = document.getElementById("buttons");
+const buttonListElement = document.getElementById("button-list");
+const answerElement = document.getElementById("answer");
+const messageElement = document.getElementById("message");
+
 function startGame() {
     let buttonNumbers = Number(document.getElementById("number").value);
     if (300 > buttonNumbers > 0) {
         winnerNumber = Math.floor(Math.random() * buttonNumbers) + 1;
-        document.getElementById("start-game").setAttribute("hidden", "");
+        startElement.setAttribute("hidden", "");
         createButtonsList(buttonNumbers);
     } else { 
         alert("You must to write a number!")
-    }
-}
+    };
+};
 
 function createButtonsList (number) { 
-    document.getElementById("buttons").removeAttribute("hidden");
-    let btnList = document.getElementById("button-list");
+    buttonSideElement.removeAttribute("hidden");
     for (let i = 1; i <= number; i++) { 
         let btnElement = createBtnElement(i);
-        btnList.appendChild(btnElement);
-    }
-}
+        buttonListElement.appendChild(btnElement);
+    };
+};
 
 function createBtnElement (numberText) { 
     let btn = document.createElement("button");
     btn.classList.add("btn", "btn-primary", "m-3", "size-up");
     btn.innerText = numberText;
-        btn.onclick = function () {
-            if (btn.innerText == winnerNumber) {
-                document.getElementById("answer").removeAttribute("hidden");
-                document.getElementById("win_msg").innerText = `You WIN!!!\n  Winner button was ${winnerNumber}`;
-                document.getElementById("buttons").setAttribute("hidden", "");
-            } else { 
-                document.getElementById("answer").removeAttribute("hidden");
-                document.getElementById("win_msg").innerText = `You LOSE!!! \n  Winner button was ${winnerNumber}`;
-                document.getElementById("buttons").setAttribute("hidden", "");
-            }
-        };
+    btn.onclick = function () {
+        if (btn.innerText == winnerNumber) {
+            showWinMsg();
+        } else { 
+            showLoseMsg();
+        }
+    };
     return btn;
 };
 
 function goToStart () {
-    document.getElementById("start-game").removeAttribute("hidden");
-    document.getElementById("answer").setAttribute("hidden", "");
-    document.getElementById("button-list").innerHTML = "<!-- button content -->";
+    startElement.removeAttribute("hidden");
+    answerElement.setAttribute("hidden", "");
+    buttonListElement.innerHTML = "<!-- button content -->";
+};
+
+function showWinMsg() { 
+    answerElement.removeAttribute("hidden");
+    messageElement.innerText = `You WIN!!!\n  Winner button was ${winnerNumber}`;
+    buttonSideElement.setAttribute("hidden", "");
+};
+
+function showLoseMsg() {
+    answerElement.removeAttribute("hidden");
+    messageElement.innerText = `You LOSE!!! \n  Winner button was ${winnerNumber}`;
+    buttonSideElement.setAttribute("hidden", "");
 };
