@@ -12,13 +12,13 @@ function startGame() {
     if (300 > buttonNumbers > 0) {
         winnerNumber = Math.floor(Math.random() * buttonNumbers) + 1;
         startElement.setAttribute("hidden", "");
-        createButtonsList(buttonNumbers);
+        createButtonsListElements(buttonNumbers);
     } else { 
         alert("You must to write a number!")
     };
 };
 
-function createButtonsList (number) { 
+function createButtonsListElements(number) { 
     buttonSideElement.removeAttribute("hidden");
     for (let i = 1; i <= number; i++) { 
         let btnElement = createBtnElement(i);
@@ -26,7 +26,7 @@ function createButtonsList (number) {
     };
 };
 
-function createBtnElement (numberText) { 
+function createBtnElement(numberText) { 
     let btn = document.createElement("button");
     btn.classList.add("btn", "btn-primary", "m-3", "size-up");
     btn.innerText = numberText;
@@ -40,10 +40,9 @@ function createBtnElement (numberText) {
     return btn;
 };
 
-function goToStart () {
-    startElement.removeAttribute("hidden");
-    answerElement.setAttribute("hidden", "");
-    buttonListElement.innerHTML = "<!-- button content -->";
+function hideButtonsShowAnswer() {
+    answerElement.removeAttribute("hidden");
+    buttonSideElement.setAttribute("hidden", "");
 };
 
 function showWinMsg() { 
@@ -56,7 +55,8 @@ function showLoseMsg() {
     messageElement.innerText = `You LOSE!!! \n  Winner button was ${winnerNumber}`;
 };
 
-function hideButtonsShowAnswer() {
-    answerElement.removeAttribute("hidden");
-    buttonSideElement.setAttribute("hidden", "");
+function goToStart() {
+    startElement.removeAttribute("hidden");
+    answerElement.setAttribute("hidden", "");
+    buttonListElement.innerHTML = "<!-- button content -->";
 };
