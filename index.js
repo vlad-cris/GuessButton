@@ -47,13 +47,16 @@ function goToStart () {
 };
 
 function showWinMsg() { 
-    answerElement.removeAttribute("hidden");
+    hideButtonsShowAnswer();
     messageElement.innerText = `You WIN!!!\n  Winner button was ${winnerNumber}`;
-    buttonSideElement.setAttribute("hidden", "");
 };
 
 function showLoseMsg() {
-    answerElement.removeAttribute("hidden");
+    hideButtonsShowAnswer();
     messageElement.innerText = `You LOSE!!! \n  Winner button was ${winnerNumber}`;
+};
+
+function hideButtonsShowAnswer() {
+    answerElement.removeAttribute("hidden");
     buttonSideElement.setAttribute("hidden", "");
 };
